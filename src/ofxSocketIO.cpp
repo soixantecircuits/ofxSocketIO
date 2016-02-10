@@ -19,7 +19,7 @@ void ofxSocketIO::setup (std::string &address) {
 }
 
 void ofxSocketIO::onConnect () {
-  ofLogNotice("ofxSocketIO", "connection");
+  // ofLogNotice("ofxSocketIO", "connection");
   socket = client.socket();
   currentStatus = "connected";
   ofNotifyEvent(notifyEvent, currentStatus);
@@ -28,25 +28,25 @@ void ofxSocketIO::onConnect () {
 
 void ofxSocketIO::onClose (sio::client::close_reason const& reason) {
   currentStatus = "close";
-  ofLogNotice("ofxSocketIO", currentStatus);
+  // ofLogNotice("ofxSocketIO", currentStatus);
   ofNotifyEvent(notifyEvent, currentStatus);
 }
 
 void ofxSocketIO::onFail () {
   currentStatus = "error";
-  ofLogNotice("ofxSocketIO", currentStatus);
+  // ofLogNotice("ofxSocketIO", currentStatus);
   ofNotifyEvent(notifyEvent, currentStatus);
 }
 
 void ofxSocketIO::onTryReconnect () {
   currentStatus = "trying to reconnect";
-  ofLogNotice("ofxSocketIO", currentStatus);
+  // ofLogNotice("ofxSocketIO", currentStatus);
   ofNotifyEvent(notifyEvent, currentStatus);
 }
 
 void ofxSocketIO::bindEvent (ofEvent<string>& event, string eventName) {
   socket->on(eventName, sio::socket::event_listener_aux([&] (string const& name, sio::message::ptr const& data, bool isAck, sio::message::list &ack_resp) {
-    ofLogNotice("ofxSocketIO - event name", name);
+    // ofLogNotice("ofxSocketIO - event name", name);
     ofNotifyEvent(event, eventName);
   }));
 }
