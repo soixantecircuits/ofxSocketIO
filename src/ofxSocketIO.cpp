@@ -1,6 +1,5 @@
 //
 //  ofxSocketIO.cpp
-//  spacebro-client
 //
 //  Created by hugohil on 05/02/16.
 //
