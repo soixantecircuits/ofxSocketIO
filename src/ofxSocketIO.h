@@ -14,6 +14,7 @@
   // Linux and OSX here
   #include <sio_client.h>
 #endif
+#include "ofxSocketIOData.h"
 
 class ofxSocketIO : protected ofThread {
 private :
@@ -30,7 +31,7 @@ public :
   void onFail();
   void onTryReconnect();
 
-  void bindEvent(ofEvent<string>& event, string eventName);
+  void bindEvent(ofEvent<ofxSocketIOData&>& event, string eventName);
 
   ofEvent<void> connectionEvent;
   ofEvent<string> notifyEvent;

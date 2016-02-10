@@ -79,3 +79,7 @@ Desktop.ini
 
 # Android
 .csettings
+
+# Node.js
+example/script/node_modules/**
+example/script/npm-debug.log

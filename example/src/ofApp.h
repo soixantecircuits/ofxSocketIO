@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofEvents.h"
 #include "ofxSocketIO.h"
-
+#include "ofxSocketIOData.h"
 
 class ofApp : public ofBaseApp{
 public:
@@ -15,14 +15,14 @@ public:
   void keyReleased(int key);
 
   void gotEvent(string& name);
-  void onServerEvent(string& name);
+  void onServerEvent(ofxSocketIOData& data);
 
   ofxSocketIO socketIO;
 
   bool isConnected;
   void onConnection();
   void bindEvents();
-  ofEvent<string> serverEvent;
+  ofEvent<ofxSocketIOData&> serverEvent;
 
   string address;
   string status;

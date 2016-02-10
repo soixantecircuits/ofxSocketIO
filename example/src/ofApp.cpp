@@ -20,7 +20,7 @@ void ofApp::onConnection () {
 void ofApp::bindEvents () {
   string eventName = "server-event";
   socketIO.bindEvent(serverEvent, eventName);
-  ofAddListener(serverEvent, this, &ofApp::gotEvent);
+  ofAddListener(serverEvent, this, &ofApp::onServerEvent);
 }
 
 //--------------------------------------------------------------
@@ -49,7 +49,9 @@ void ofApp::gotEvent(string& name) {
 }
 
 //--------------------------------------------------------------
-void ofApp::onServerEvent (string& name) {
-  ofLogNotice("ofApp - onServerEvent", name);
-//  status = name;
+void ofApp::onServerEvent (ofxSocketIOData& data) {
+  ofLogNotice("ofxSocketIO", data.getStringValue("stringData"));
+  ofLogNotice("ofxSocketIO", ofToString(data.getIntValue("intData")));
+  ofLogNotice("ofxSocketIO", ofToString(data.getFloatValue("floatData")));
+  ofLogNotice("ofxSocketIO", ofToString(data.getBoolValue("boolData")));
 }
