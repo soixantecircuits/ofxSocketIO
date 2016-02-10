@@ -46,7 +46,8 @@ void ofxSocketIO::onTryReconnect () {
 void ofxSocketIO::bindEvent (ofEvent<string>& event, string eventName) {
   socket->on(eventName, sio::socket::event_listener_aux([&] (string const& name, sio::message::ptr const& data, bool isAck, sio::message::list &ack_resp) {
     // ofLogNotice("ofxSocketIO - event name", name);
-    ofNotifyEvent(event, eventName);
+    string nameCopy = name;
+    ofNotifyEvent(event, nameCopy, this);
   }));
 }
 
