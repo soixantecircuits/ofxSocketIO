@@ -14,7 +14,7 @@ public:
   void keyPressed(int key);
   void keyReleased(int key);
 
-  void gotEvent(string& name);
+  void gotEvent(std::string& name);
   void onServerEvent(ofxSocketIOData& data);
 
   ofxSocketIO socketIO;
@@ -24,6 +24,6 @@ public:
   void bindEvents();
   ofEvent<ofxSocketIOData&> serverEvent;
 
-  string address;
-  string status;
+  std::string address;
+  std::string status;
 };

@@ -21,20 +21,20 @@ private :
   sio::client client;
   sio::socket::ptr socket;
 
-  string currentStatus;
+  std::string currentStatus;
 
 public :
-  void setup(string& address);
+  void setup(std::string& address);
 
   void onConnect();
   void onClose(sio::client::close_reason const& reason);
   void onFail();
   void onTryReconnect();
 
-  void bindEvent(ofEvent<ofxSocketIOData&>& event, string eventName);
+  void bindEvent(ofEvent<ofxSocketIOData&>& event, std::string eventName);
 
   ofEvent<void> connectionEvent;
-  ofEvent<string> notifyEvent;
+  ofEvent<std::string> notifyEvent;
 
   void closeConnection();
 };

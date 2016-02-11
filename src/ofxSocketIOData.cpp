@@ -1,6 +1,8 @@
 #include "ofxSocketIOData.h"
 
-void ofxSocketIOData::setData(sio::message::ptr data) {
+ofxSocketIOData::ofxSocketIOData () {}
+
+void ofxSocketIOData::setData(sio::message::ptr const& data) {
   _data = data;
 }
 

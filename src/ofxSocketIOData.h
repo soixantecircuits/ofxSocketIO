@@ -15,7 +15,7 @@ private :
 public :
   ofxSocketIOData();
 
-  void setData(sio::message::ptr);
+  void setData(sio::message::ptr const&);
 
   std::string getStringValue(std::string key);
   int getIntValue(std::string key);

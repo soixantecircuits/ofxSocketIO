@@ -18,7 +18,7 @@ void ofApp::onConnection () {
 }
 
 void ofApp::bindEvents () {
-  string eventName = "server-event";
+  std::string eventName = "server-event";
   socketIO.bindEvent(serverEvent, eventName);
   ofAddListener(serverEvent, this, &ofApp::onServerEvent);
 }
