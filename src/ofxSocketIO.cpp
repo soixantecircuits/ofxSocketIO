@@ -47,9 +47,30 @@ void ofxSocketIO::bindEvent (ofEvent<ofxSocketIOData&>& event, string eventName)
   socket->on(eventName, sio::socket::event_listener_aux([&] (string const& name, sio::message::ptr const& data, bool isAck, sio::message::list &ack_resp) {
     // ofLogNotice("ofxSocketIO - event name", name);
     ofxSocketIOData ofxData;
-    ofxData.setData(data);
+    if (data) {
+      ofxData.setData(data);
+    } else {
+      ofxData.setNullData();
+    }
     ofNotifyEvent(event, ofxData, this);
   }));
+}
+
+void ofxSocketIO::emit (std::string& eventName) {
+  if (socket) {
+    socket->emit(eventName);
+  } else {
+    ofLogNotice("ofxSocketIO", "socket is not available.");
+  }
+}
+
+template <typename T>
+void ofxSocketIO::emit (std::string& eventName, T& data) {
+  if (socket) {
+    socket->emit(eventName, data);
+  } else {
+    ofLogNotice("ofxSocketIO", "socket is not available.");
+  }
 }
 
 void ofxSocketIO::closeConnection () {

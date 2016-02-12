@@ -16,6 +16,7 @@ public :
   ofxSocketIOData();
 
   void setData(sio::message::ptr const&);
+  void setNullData();
 
   std::string getStringValue(std::string key);
   int getIntValue(std::string key);

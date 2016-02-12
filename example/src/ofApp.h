@@ -16,6 +16,7 @@ public:
 
   void gotEvent(std::string& name);
   void onServerEvent(ofxSocketIOData& data);
+  void onPingEvent(ofxSocketIOData& data);
 
   ofxSocketIO socketIO;
 
@@ -23,6 +24,7 @@ public:
   void onConnection();
   void bindEvents();
   ofEvent<ofxSocketIOData&> serverEvent;
+  ofEvent<ofxSocketIOData&> pingEvent;
 
   std::string address;
   std::string status;

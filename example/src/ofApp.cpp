@@ -18,9 +18,13 @@ void ofApp::onConnection () {
 }
 
 void ofApp::bindEvents () {
-  std::string eventName = "server-event";
-  socketIO.bindEvent(serverEvent, eventName);
+  std::string serverEventName = "server-event";
+  socketIO.bindEvent(serverEvent, serverEventName);
   ofAddListener(serverEvent, this, &ofApp::onServerEvent);
+
+  std::string pingEventName = "ping";
+  socketIO.bindEvent(pingEvent, pingEventName);
+  ofAddListener(pingEvent, this, &ofApp::onPingEvent);
 }
 
 //--------------------------------------------------------------
@@ -54,4 +58,13 @@ void ofApp::onServerEvent (ofxSocketIOData& data) {
   ofLogNotice("ofxSocketIO", ofToString(data.getIntValue("intData")));
   ofLogNotice("ofxSocketIO", ofToString(data.getFloatValue("floatData")));
   ofLogNotice("ofxSocketIO", ofToString(data.getBoolValue("boolData")));
+}
+
+void ofApp::onPingEvent (ofxSocketIOData& data) {
+  ofLogNotice("ofxSocketIO", "ping");
+  std::string pong = "pong";
+  int param = 5;
+  socketIO.emit(pong);
+  // The following does not compile. Need to look after it
+  // socketIO.emit<int>(pong, param);
 }

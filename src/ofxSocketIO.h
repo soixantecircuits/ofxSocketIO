@@ -36,5 +36,10 @@ public :
   ofEvent<void> connectionEvent;
   ofEvent<std::string> notifyEvent;
 
+  void emit(std::string& eventName);
+
+  template <typename T>
+  void emit(std::string& eventName, T& data);
+
   void closeConnection();
 };
