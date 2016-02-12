@@ -18,13 +18,13 @@ int ofxSocketIOData::getIntValue(std::string key) {
 }
 
 float ofxSocketIOData::getFloatValue(std::string key) {
-  return _data->get_map()[key]->get_int();
+  return (float) _data->get_map()[key]->get_double();
 }
 
 double ofxSocketIOData::getDoubleValue(std::string key) {
-  return _data->get_map()[key]->get_int();
+  return _data->get_map()[key]->get_double();
 }
 
 bool ofxSocketIOData::getBoolValue(std::string key) {
-  return _data->get_map()[key]->get_int();
+  return _data->get_map()[key]->get_bool();
 }

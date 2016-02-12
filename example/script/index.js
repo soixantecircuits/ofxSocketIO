@@ -3,12 +3,12 @@
 const config = require('./config.json')
 const colors = require('colors')
 let io
-const datas = [{
+const datas = {
   stringData: "foo",
   intData: 5,
   floatData: 0.5,
   boolData: true
-}]
+}
 
 io = require('socket.io')(config.server.port)
 io.on('connection', function (socket) {

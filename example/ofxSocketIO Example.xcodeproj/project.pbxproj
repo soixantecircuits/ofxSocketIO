@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08364DFD3A7CBC6885885276 /* ofxSocketIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0A96C398AD37CAFA23F824F3 /* ofxSocketIO.cpp */; };
+		9A3C5B561C6DF4AF002EAE50 /* ofxSocketIOData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A3C5B541C6DF4AF002EAE50 /* ofxSocketIOData.cpp */; };
 		BEDFEE7400C58EA4E412B757 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2B099E6BD1199664C48B177 /* ofxJSONElement.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
@@ -52,6 +53,9 @@
 		2C7CF000B7B4F782C187C353 /* json.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = json.h; path = ../../ofxJSON/libs/jsoncpp/include/json/json.h; sourceTree = SOURCE_ROOT; };
 		377CC4A6E20C685706D363AA /* sio_message.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = sio_message.h; path = "../libs/socket.io-client/include/sio_message.h"; sourceTree = SOURCE_ROOT; };
 		61313493CDB52744E22A604D /* json-forwards.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "json-forwards.h"; path = "../../ofxJSON/libs/jsoncpp/include/json/json-forwards.h"; sourceTree = SOURCE_ROOT; };
+		9A3C5B521C6DF011002EAE50 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		9A3C5B541C6DF4AF002EAE50 /* ofxSocketIOData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxSocketIOData.cpp; path = ../src/ofxSocketIOData.cpp; sourceTree = "<group>"; };
+		9A3C5B551C6DF4AF002EAE50 /* ofxSocketIOData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSocketIOData.h; path = ../src/ofxSocketIOData.h; sourceTree = "<group>"; };
 		9D3D8BF6F1454309C9E6A63D /* ofxSocketIO.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSocketIO.h; path = ../src/ofxSocketIO.h; sourceTree = SOURCE_ROOT; };
 		C14ED2EE3F8F912B55FDE03C /* sio_socket.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = sio_socket.h; path = "../libs/socket.io-client/include/sio_socket.h"; sourceTree = SOURCE_ROOT; };
 		DC93B9A52589625D3592286D /* sio_client.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = sio_client.h; path = "../libs/socket.io-client/include/sio_client.h"; sourceTree = SOURCE_ROOT; };
@@ -151,6 +155,8 @@
 		90E9E194F97CB6FBFA12FB15 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				9A3C5B541C6DF4AF002EAE50 /* ofxSocketIOData.cpp */,
+				9A3C5B551C6DF4AF002EAE50 /* ofxSocketIOData.h */,
 				0A96C398AD37CAFA23F824F3 /* ofxSocketIO.cpp */,
 				9D3D8BF6F1454309C9E6A63D /* ofxSocketIO.h */,
 			);
@@ -202,6 +208,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				9A3C5B521C6DF011002EAE50 /* libc++.tbd */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -326,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A3C5B561C6DF4AF002EAE50 /* ofxSocketIOData.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				BEDFEE7400C58EA4E412B757 /* ofxJSONElement.cpp in Sources */,

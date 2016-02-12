@@ -8,7 +8,7 @@
   #include <sio_client.h>
 #endif
 
-class ofxSocketIOData {
+class ofxSocketIOData : public ofEventArgs {
 private :
   sio::message::ptr _data;
 
