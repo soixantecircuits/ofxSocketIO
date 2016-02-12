@@ -36,7 +36,7 @@ public :
   ofEvent<void> connectionEvent;
   ofEvent<std::string> notifyEvent;
 
-  void emit(std::string& eventName);
+  void emit(std::string& eventName, std::string& data);
 
   template <typename T>
   void emit(std::string& eventName, T& data);

@@ -63,8 +63,7 @@ void ofApp::onServerEvent (ofxSocketIOData& data) {
 void ofApp::onPingEvent (ofxSocketIOData& data) {
   ofLogNotice("ofxSocketIO", "ping");
   std::string pong = "pong";
+  std::string param = "foo";
   int param = 5;
-  socketIO.emit(pong);
-  // The following does not compile. Need to look after it
-  // socketIO.emit<int>(pong, param);
+  socketIO.emit(pong, param);
 }

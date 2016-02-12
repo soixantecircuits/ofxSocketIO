@@ -56,9 +56,9 @@ void ofxSocketIO::bindEvent (ofEvent<ofxSocketIOData&>& event, string eventName)
   }));
 }
 
-void ofxSocketIO::emit (std::string& eventName) {
+void ofxSocketIO::emit (std::string& eventName, std::string& data) {
   if (socket) {
-    socket->emit(eventName);
+    socket->emit(eventName, data);
   } else {
     ofLogNotice("ofxSocketIO", "socket is not available.");
   }
