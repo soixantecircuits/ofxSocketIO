@@ -64,6 +64,5 @@ void ofApp::onPingEvent (ofxSocketIOData& data) {
   ofLogNotice("ofxSocketIO", "ping");
   std::string pong = "pong";
   std::string param = "foo";
-  int param = 5;
   socketIO.emit(pong, param);
 }

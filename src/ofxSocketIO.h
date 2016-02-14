@@ -38,8 +38,5 @@ public :
 
   void emit(std::string& eventName, std::string& data);
 
-  template <typename T>
-  void emit(std::string& eventName, T& data);
-
   void closeConnection();
 };

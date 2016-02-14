@@ -64,15 +64,6 @@ void ofxSocketIO::emit (std::string& eventName, std::string& data) {
   }
 }
 
-template <typename T>
-void ofxSocketIO::emit (std::string& eventName, T& data) {
-  if (socket) {
-    socket->emit(eventName, data);
-  } else {
-    ofLogNotice("ofxSocketIO", "socket is not available.");
-  }
-}
-
 void ofxSocketIO::closeConnection () {
   client.sync_close();
 }
