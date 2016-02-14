@@ -23,13 +23,13 @@ private :
 
   std::string currentStatus;
 
-public :
-  void setup(std::string& address);
-
   void onConnect();
   void onClose(sio::client::close_reason const& reason);
   void onFail();
   void onTryReconnect();
+
+public :
+  void setup(std::string& address);
 
   void bindEvent(ofEvent<ofxSocketIOData&>& event, std::string eventName);
 
