@@ -64,6 +64,18 @@ void ofxSocketIO::emit (std::string& eventName, std::string& data) {
   }
 }
 
+void ofxSocketIO::emitBinary (std::string& eventName, shared_ptr<string> const& bStr) {
+  if (socket) {
+    socket->emit(eventName, bStr);
+  } else {
+    ofLogNotice("ofxSocketIO", "socket is not available.");
+  }
+}
+
 void ofxSocketIO::closeConnection () {
   client.sync_close();
+}
+
+void ofxSocketIO::openConnection (std::string &address) {
+    client.connect(address);
 }
