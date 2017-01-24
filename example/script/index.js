@@ -15,6 +15,8 @@ io = require('socket.io')(config.server.port)
 io.on('connection', function (socket) {
   console.log('connection'.bold.green)
 
+  console.log('query:', socket.handshake.query)
+
   let emitInterval = setInterval(() => {
     socket.emit('server-event', datas)
     socket.emit('ping')
