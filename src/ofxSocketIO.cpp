@@ -7,6 +7,11 @@
 #include "ofxSocketIO.h"
 
 void ofxSocketIO::setup (std::string &address) {
+  std::map<std::string,std::string> query;
+  setup(address, query);
+}
+
+void ofxSocketIO::setup (std::string &address, std::map<std::string,std::string> &query) {
   currentStatus = "not connected";
 
   client.set_open_listener(std::bind(&ofxSocketIO::onConnect, this));
@@ -14,7 +19,7 @@ void ofxSocketIO::setup (std::string &address) {
   client.set_fail_listener(std::bind(&ofxSocketIO::onFail, this));
   client.set_reconnect_listener(std::bind(&ofxSocketIO::onTryReconnect, this));
 
-  client.connect(address);
+  client.connect(address, query);
 }
 
 void ofxSocketIO::onConnect () {
