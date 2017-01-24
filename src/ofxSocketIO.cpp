@@ -43,8 +43,8 @@ void ofxSocketIO::onTryReconnect () {
   ofNotifyEvent(notifyEvent, currentStatus);
 }
 
-void ofxSocketIO::bindEvent (ofEvent<ofxSocketIOData&>& event, string eventName) {
-  socket->on(eventName, sio::socket::event_listener_aux([&] (string const& name, sio::message::ptr const& data, bool isAck, sio::message::list &ack_resp) {
+void ofxSocketIO::bindEvent (ofEvent<ofxSocketIOData&>& event, std::string eventName, std::string nsp) {
+  client.socket(nsp)->on(eventName, sio::socket::event_listener_aux([&] (string const& name, sio::message::ptr const& data, bool isAck, sio::message::list &ack_resp) {
     ofxSocketIOData ofxData;
     if (data) {
       ofxData.setData(data);
