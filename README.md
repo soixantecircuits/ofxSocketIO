@@ -76,6 +76,10 @@ void ofApp::onServerEvent (ofxSocketIOData& data) {
 
 It exists thanks to the great work of the [socket.io-client-cpp contributors](https://github.com/socketio/socket.io-client-cpp/graphs/contributors).
 
+Finally, these folks has made some usefull contributions to `ofxSocketIO`:
+- [muraji](https://github.com/muraji)
+- [thorsonmscott](https://github.com/thorsonmscott)
+
 ### License
 
 [MIT](https://github.com/soixantecircuits/ofxSocketIO/blob/master/LICENSE)

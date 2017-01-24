@@ -30,6 +30,7 @@ private :
 
 public :
   void setup(std::string& address);
+  void setup(std::string& address, std::map<std::string,std::string>& query);
 
   void bindEvent(ofEvent<ofxSocketIOData&>& event, std::string eventName);
 
@@ -37,6 +38,8 @@ public :
   ofEvent<std::string> notifyEvent;
 
   void emit(std::string& eventName, std::string& data);
+  void emitBinary(std::string& eventName, shared_ptr<string> const& bStr);
 
   void closeConnection();
+  void openConnection(std::string& address);
 };
