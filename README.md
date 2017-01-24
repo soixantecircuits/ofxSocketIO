@@ -91,6 +91,7 @@ It exists thanks to the great work of the [socket.io-client-cpp contributors](ht
 Finally, these folks has made some usefull contributions to `ofxSocketIO`:
 - [muraji](https://github.com/muraji)
 - [thorsonmscott](https://github.com/thorsonmscott)
+- [smulube](https://github.com/smulube)
 
 ### License
 
