@@ -27,8 +27,25 @@ io.on('connection', function (socket) {
     console.log('disconnect'.bold.red)
     clearInterval(emitInterval)
   })
-  .on('pong', (data) => {
+  .on('pongy', (data) => {
     console.log('pongy'.blue, data)
   })
 })
 
+const nsp = io.of('/nsp')
+nsp.on('connection', function (socket) {
+  console.log('connection from namespace /nsp'.bold.green)
+
+  let emitInterval = setInterval(() => {
+    socket.emit('nsping')
+  }, 2000)
+
+  socket
+  .on('disconnect', () => {
+    console.log('disconnect from namespace /nsp'.bold.red)
+    clearInterval(emitInterval)
+  })
+  .on('nspong', (data) => {
+    console.log('nspong'.blue)
+  })
+})

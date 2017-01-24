@@ -32,6 +32,10 @@ void ofApp::bindEvents () {
   std::string pingEventName = "pingy";
   socketIO.bindEvent(pingEvent, pingEventName);
   ofAddListener(pingEvent, this, &ofApp::onPingEvent);
+
+  std::string nspingEventName = "nsping";
+  socketIO.bindEvent(nspingEvent, nspingEventName, "nsp");
+  ofAddListener(nspingEvent, this, &ofApp::onNSPingEvent);
 }
 
 //--------------------------------------------------------------
@@ -72,4 +76,12 @@ void ofApp::onPingEvent (ofxSocketIOData& data) {
   std::string pong = "pongy";
   std::string param = "foo";
   socketIO.emit(pong, param);
+}
+
+void ofApp::onNSPingEvent (ofxSocketIOData& data) {
+  ofLogNotice("ofxSocketIO", "nsping");
+  std::string pong = "nspong";
+  std::string param = "foo";
+  std::string nsp = "nsp";
+  socketIO.emit(pong, param, nsp);
 }
