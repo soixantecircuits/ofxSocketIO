@@ -19,7 +19,7 @@ io.on('connection', function (socket) {
 
   let emitInterval = setInterval(() => {
     socket.emit('server-event', datas)
-    socket.emit('ping')
+    socket.emit('pingy')
   }, 2000)
 
   socket
@@ -28,7 +28,7 @@ io.on('connection', function (socket) {
     clearInterval(emitInterval)
   })
   .on('pong', (data) => {
-    console.log('pong'.blue, data)
+    console.log('pongy'.blue, data)
   })
 })
 
