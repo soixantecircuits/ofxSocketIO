@@ -19,7 +19,6 @@
 class ofxSocketIO : protected ofThread {
 private :
   sio::client client;
-  sio::socket::ptr socket;
 
   std::string currentStatus;
 
@@ -32,13 +31,13 @@ public :
   void setup(std::string& address);
   void setup(std::string& address, std::map<std::string,std::string>& query);
 
-  void bindEvent(ofEvent<ofxSocketIOData&>& event, std::string eventName);
+  void bindEvent(ofEvent<ofxSocketIOData&>& event, std::string eventName, std::string nsp="");
 
   ofEvent<void> connectionEvent;
   ofEvent<std::string> notifyEvent;
 
-  void emit(std::string& eventName, std::string& data);
-  void emitBinary(std::string& eventName, shared_ptr<string> const& bStr);
+  void emit(std::string& eventName, std::string& data, std::string nsp="");
+  void emitBinary(std::string& eventName, shared_ptr<string> const& bStr, std::string nsp="");
 
   void closeConnection();
   void openConnection(std::string& address);

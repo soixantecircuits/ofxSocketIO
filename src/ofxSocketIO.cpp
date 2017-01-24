@@ -23,7 +23,6 @@ void ofxSocketIO::setup (std::string &address, std::map<std::string,std::string>
 }
 
 void ofxSocketIO::onConnect () {
-  socket = client.socket();
   currentStatus = "connected";
   ofNotifyEvent(notifyEvent, currentStatus);
   ofNotifyEvent(connectionEvent);
@@ -56,17 +55,17 @@ void ofxSocketIO::bindEvent (ofEvent<ofxSocketIOData&>& event, string eventName)
   }));
 }
 
-void ofxSocketIO::emit (std::string& eventName, std::string& data) {
-  if (socket) {
-    socket->emit(eventName, data);
+void ofxSocketIO::emit (std::string& eventName, std::string& data, string nsp) {
+  if (client.opened()) {
+    client.socket(nsp)->emit(eventName, data);
   } else {
     ofLogWarning("ofxSocketIO", "socket is not available.");
   }
 }
 
-void ofxSocketIO::emitBinary (std::string& eventName, shared_ptr<string> const& bStr) {
-  if (socket) {
-    socket->emit(eventName, bStr);
+void ofxSocketIO::emitBinary (std::string& eventName, shared_ptr<string> const& bStr, string nsp) {
+  if (client.opened()) {
+    client.socket(nsp)->emit(eventName, bStr);
   } else {
     ofLogWarning("ofxSocketIO", "socket is not available.");
   }
