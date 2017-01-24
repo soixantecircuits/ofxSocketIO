@@ -7,6 +7,13 @@ void ofApp::setup(){
   status = "not connected";
 
   socketIO.setup(address);
+  /*
+   * You can also pass a query parameter at connection if needed.
+   */
+  // std::map<std::string,std::string> query;
+  // query["token"] = "hello";
+  // socketIO.setup(address, query);
+
   ofAddListener(socketIO.notifyEvent, this, &ofApp::gotEvent);
 
   ofAddListener(socketIO.connectionEvent, this, &ofApp::onConnection);
@@ -22,7 +29,7 @@ void ofApp::bindEvents () {
   socketIO.bindEvent(serverEvent, serverEventName);
   ofAddListener(serverEvent, this, &ofApp::onServerEvent);
 
-  std::string pingEventName = "ping";
+  std::string pingEventName = "pingy";
   socketIO.bindEvent(pingEvent, pingEventName);
   ofAddListener(pingEvent, this, &ofApp::onPingEvent);
 }
@@ -61,8 +68,8 @@ void ofApp::onServerEvent (ofxSocketIOData& data) {
 }
 
 void ofApp::onPingEvent (ofxSocketIOData& data) {
-  ofLogNotice("ofxSocketIO", "ping");
-  std::string pong = "pong";
+  ofLogNotice("ofxSocketIO", "pingy");
+  std::string pong = "pongy";
   std::string param = "foo";
   socketIO.emit(pong, param);
 }

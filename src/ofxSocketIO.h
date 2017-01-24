@@ -29,6 +29,7 @@ private :
 
 public :
   void setup(std::string& address);
+  void setup(std::string& address, std::map<std::string,std::string>& query);
 
   void bindEvent(ofEvent<ofxSocketIOData&>& event, std::string eventName, std::string nsp="");
 
