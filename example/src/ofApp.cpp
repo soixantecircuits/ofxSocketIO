@@ -7,6 +7,13 @@ void ofApp::setup(){
   status = "not connected";
 
   socketIO.setup(address);
+  /*
+   * You can also pass a query parameter at connection if needed.
+   */
+  // std::map<std::string,std::string> query;
+  // query["token"] = "hello";
+  // socketIO.setup(address, query);
+
   ofAddListener(socketIO.notifyEvent, this, &ofApp::gotEvent);
 
   ofAddListener(socketIO.connectionEvent, this, &ofApp::onConnection);
