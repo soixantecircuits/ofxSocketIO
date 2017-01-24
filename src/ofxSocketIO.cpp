@@ -55,6 +55,11 @@ void ofxSocketIO::bindEvent (ofEvent<ofxSocketIOData&>& event, std::string event
   }));
 }
 
+void ofxSocketIO::emit (std::string& eventName) {
+  std::string data;
+  emit(eventName, data);
+}
+
 void ofxSocketIO::emit (std::string& eventName, std::string& data, string nsp) {
   if (client.opened()) {
     client.socket(nsp)->emit(eventName, data);

@@ -36,6 +36,7 @@ public :
   ofEvent<void> connectionEvent;
   ofEvent<std::string> notifyEvent;
 
+  void emit(std::string& eventName);
   void emit(std::string& eventName, std::string& data, std::string nsp="");
   void emitBinary(std::string& eventName, shared_ptr<string> const& bStr, std::string nsp="");
 

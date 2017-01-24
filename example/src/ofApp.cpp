@@ -76,6 +76,10 @@ void ofApp::onPingEvent (ofxSocketIOData& data) {
   std::string pong = "pongy";
   std::string param = "foo";
   socketIO.emit(pong, param);
+  /*
+   * You can also emit without param
+   */
+  // socketIO.emit(pong);
 }
 
 void ofApp::onNSPingEvent (ofxSocketIOData& data) {
