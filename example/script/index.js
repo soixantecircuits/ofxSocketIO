@@ -1,10 +1,11 @@
 'use strict'
 
+require('colors')
 const config = require('./config.json')
-const colors = require('colors')
+
 let io
 const datas = {
-  stringData: "foo",
+  stringData: 'foo',
   intData: 5,
   floatData: 0.5,
   boolData: true
@@ -25,7 +26,7 @@ io.on('connection', function (socket) {
     clearInterval(emitInterval)
   })
   .on('pong', (data) => {
-    console.log('pong'.blue, data);
+    console.log('pong'.blue, data)
   })
 })
 
