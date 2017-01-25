@@ -23,8 +23,6 @@ void ofxSocketIO::setup (std::string &address, std::map<std::string,std::string>
 }
 
 void ofxSocketIO::onConnect () {
-  // ofLogNotice("ofxSocketIO", "connection");
-  socket = client.socket();
   currentStatus = "connected";
   ofNotifyEvent(notifyEvent, currentStatus);
   ofNotifyEvent(connectionEvent);
@@ -32,25 +30,21 @@ void ofxSocketIO::onConnect () {
 
 void ofxSocketIO::onClose (sio::client::close_reason const& reason) {
   currentStatus = "close";
-  // ofLogNotice("ofxSocketIO", currentStatus);
   ofNotifyEvent(notifyEvent, currentStatus);
 }
 
 void ofxSocketIO::onFail () {
   currentStatus = "error";
-  // ofLogNotice("ofxSocketIO", currentStatus);
   ofNotifyEvent(notifyEvent, currentStatus);
 }
 
 void ofxSocketIO::onTryReconnect () {
   currentStatus = "trying to reconnect";
-  // ofLogNotice("ofxSocketIO", currentStatus);
   ofNotifyEvent(notifyEvent, currentStatus);
 }
 
-void ofxSocketIO::bindEvent (ofEvent<ofxSocketIOData&>& event, string eventName) {
-  socket->on(eventName, sio::socket::event_listener_aux([&] (string const& name, sio::message::ptr const& data, bool isAck, sio::message::list &ack_resp) {
-    // ofLogNotice("ofxSocketIO - event name", name);
+void ofxSocketIO::bindEvent (ofEvent<ofxSocketIOData&>& event, std::string eventName, std::string nsp) {
+  client.socket(nsp)->on(eventName, sio::socket::event_listener_aux([&] (string const& name, sio::message::ptr const& data, bool isAck, sio::message::list &ack_resp) {
     ofxSocketIOData ofxData;
     if (data) {
       ofxData.setData(data);
@@ -61,19 +55,24 @@ void ofxSocketIO::bindEvent (ofEvent<ofxSocketIOData&>& event, string eventName)
   }));
 }
 
-void ofxSocketIO::emit (std::string& eventName, std::string& data) {
-  if (socket) {
-    socket->emit(eventName, data);
+void ofxSocketIO::emit (std::string& eventName) {
+  std::string data;
+  emit(eventName, data);
+}
+
+void ofxSocketIO::emit (std::string& eventName, std::string& data, string nsp) {
+  if (client.opened()) {
+    client.socket(nsp)->emit(eventName, data);
   } else {
-    ofLogNotice("ofxSocketIO", "socket is not available.");
+    ofLogWarning("ofxSocketIO", "socket is not available.");
   }
 }
 
-void ofxSocketIO::emitBinary (std::string& eventName, shared_ptr<string> const& bStr) {
-  if (socket) {
-    socket->emit(eventName, bStr);
+void ofxSocketIO::emitBinary (std::string& eventName, shared_ptr<string> const& bStr, string nsp) {
+  if (client.opened()) {
+    client.socket(nsp)->emit(eventName, bStr);
   } else {
-    ofLogNotice("ofxSocketIO", "socket is not available.");
+    ofLogWarning("ofxSocketIO", "socket is not available.");
   }
 }
 

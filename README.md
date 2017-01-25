@@ -69,6 +69,18 @@ void ofApp::onServerEvent (ofxSocketIOData& data) {
 ##### `getBoolValue(std::string key)`
 &rarr; Get the `bool` value for the specified key.
 
+### Troubleshooting
+
+#### ping pong
+
+You may experience issues with `'ping'` and `'pong'` events, as they are used internally by socket.io:
+
+```
+- `ping`. Fired when a ping packet is written out to the server.
+- `pong`. Fired when a pong is received from the server.
+```
+
+*[source](https://github.com/socketio/socket.io-client/issues/1022)*
 
 ### Credits
 
@@ -79,6 +91,8 @@ It exists thanks to the great work of the [socket.io-client-cpp contributors](ht
 Finally, these folks has made some usefull contributions to `ofxSocketIO`:
 - [muraji](https://github.com/muraji)
 - [thorsonmscott](https://github.com/thorsonmscott)
+- [smulube](https://github.com/smulube)
+- [sy1vain](https://github.com/sy1vain)
 
 ### License
 

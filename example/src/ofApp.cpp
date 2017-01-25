@@ -29,9 +29,13 @@ void ofApp::bindEvents () {
   socketIO.bindEvent(serverEvent, serverEventName);
   ofAddListener(serverEvent, this, &ofApp::onServerEvent);
 
-  std::string pingEventName = "ping";
+  std::string pingEventName = "pingy";
   socketIO.bindEvent(pingEvent, pingEventName);
   ofAddListener(pingEvent, this, &ofApp::onPingEvent);
+
+  std::string nspingEventName = "nsping";
+  socketIO.bindEvent(nspingEvent, nspingEventName, "nsp");
+  ofAddListener(nspingEvent, this, &ofApp::onNSPingEvent);
 }
 
 //--------------------------------------------------------------
@@ -68,8 +72,20 @@ void ofApp::onServerEvent (ofxSocketIOData& data) {
 }
 
 void ofApp::onPingEvent (ofxSocketIOData& data) {
-  ofLogNotice("ofxSocketIO", "ping");
-  std::string pong = "pong";
+  ofLogNotice("ofxSocketIO", "pingy");
+  std::string pong = "pongy";
   std::string param = "foo";
   socketIO.emit(pong, param);
+  /*
+   * You can also emit without param
+   */
+  // socketIO.emit(pong);
+}
+
+void ofApp::onNSPingEvent (ofxSocketIOData& data) {
+  ofLogNotice("ofxSocketIO", "nsping");
+  std::string pong = "nspong";
+  std::string param = "foo";
+  std::string nsp = "nsp";
+  socketIO.emit(pong, param, nsp);
 }
