@@ -8,7 +8,10 @@ const datas = {
   stringData: 'foo',
   intData: 5,
   floatData: 0.5,
-  boolData: true
+  boolData: true,
+  nested: {
+    hello: 'world'
+  }
 }
 
 io = require('socket.io')(config.server.port)

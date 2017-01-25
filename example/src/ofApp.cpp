@@ -69,6 +69,9 @@ void ofApp::onServerEvent (ofxSocketIOData& data) {
   ofLogNotice("ofxSocketIO", ofToString(data.getIntValue("intData")));
   ofLogNotice("ofxSocketIO", ofToString(data.getFloatValue("floatData")));
   ofLogNotice("ofxSocketIO", ofToString(data.getBoolValue("boolData")));
+
+  ofxSocketIOData nested = data.getNestedValue("nested");
+  ofLogNotice("ofxSocketIO", ofToString(nested.getStringValue("hello")));
 }
 
 void ofApp::onPingEvent (ofxSocketIOData& data) {
