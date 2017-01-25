@@ -62,3 +62,15 @@ bool ofxSocketIOData::getBoolValue(std::string key) {
   }
   return result;
 }
+
+ofxSocketIOData ofxSocketIOData::getNestedValue(std::string key) {
+  sio::message::ptr data;
+  ofxSocketIOData result;
+  if (_data) {
+    data = _data->get_map()[key];
+    result.setData(data);
+  } else {
+    result.setData(data);
+  }
+  return result;
+}

@@ -23,4 +23,5 @@ public :
   float getFloatValue(std::string key);
   double getDoubleValue(std::string key);
   bool getBoolValue(std::string key);
+  ofxSocketIOData getNestedValue(std::string key);
 };
