@@ -29,18 +29,22 @@ void ofxSocketIO::onConnect () {
 }
 
 void ofxSocketIO::onClose (sio::client::close_reason const& reason) {
-  currentStatus = "close";
+  currentStatus = "closed";
   ofNotifyEvent(notifyEvent, currentStatus);
 }
 
 void ofxSocketIO::onFail () {
-  currentStatus = "error";
+  currentStatus = "errored";
   ofNotifyEvent(notifyEvent, currentStatus);
 }
 
 void ofxSocketIO::onTryReconnect () {
-  currentStatus = "trying to reconnect";
+  currentStatus = "reconnecting";
   ofNotifyEvent(notifyEvent, currentStatus);
+}
+
+string ofxSocketIO::getStatus() {
+  return currentStatus;
 }
 
 void ofxSocketIO::bindEvent (ofEvent<ofxSocketIOData&>& event, std::string eventName, std::string nsp) {

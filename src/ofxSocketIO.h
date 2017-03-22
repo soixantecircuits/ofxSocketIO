@@ -19,6 +19,7 @@
 class ofxSocketIO : protected ofThread {
 private :
   sio::client client;
+  std::string currentStatus = "closed";
 
   void onConnect();
   void onClose(sio::client::close_reason const& reason);
@@ -26,7 +27,7 @@ private :
   void onTryReconnect();
 
 public :
-  std::string currentStatus = "close";
+  string getStatus();
 
   void setup(std::string& address);
   void setup(std::string& address, std::map<std::string,std::string>& query);
