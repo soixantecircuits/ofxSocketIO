@@ -81,6 +81,7 @@ void ofxSocketIO::emitBinary (std::string& eventName, shared_ptr<string> const& 
 }
 
 void ofxSocketIO::closeConnection () {
+  currentStatus = "closed";
   client.sync_close();
 }
 
