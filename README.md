@@ -40,7 +40,7 @@ void ofApp::onServerEvent (ofxSocketIOData& data) {
 }
 ```
 
-##### `getstatus`
+##### `getStatus`
 &rarr; Returns the current status. Either `connected`, `closed`, `reconnecting` or `errored`.
 
 ##### `connectionEvent`
