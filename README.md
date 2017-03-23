@@ -87,7 +87,7 @@ You may experience issues with `'ping'` and `'pong'` events, as they are used in
 
 ### Credits
 
-`ofxSocketIO` is maintained by [Soixante circuits](http://www.soixantecircuits.fr).
+`ofxSocketIO` is maintained by [Soixante circuits](http://www.soixantecircuits.fr) and [hugohil](http://github.com/hugohil).
 
 It exists thanks to the great work of the [socket.io-client-cpp contributors](https://github.com/socketio/socket.io-client-cpp/graphs/contributors).
 
