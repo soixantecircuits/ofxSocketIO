@@ -24,4 +24,6 @@ public :
   double getDoubleValue(std::string key);
   bool getBoolValue(std::string key);
   ofxSocketIOData getNestedValue(std::string key);
+
+  std::vector<std::shared_ptr<sio::message>>& getVector();
 };
