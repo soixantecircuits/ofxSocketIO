@@ -2,7 +2,7 @@
 
 ### Description
 
-`ofxSocketIO` is an ofxaddon that wraps [`socket.io-client-cpp`](https://github.com/socketio/socket.io-client-cpp). **It is still under active development.**
+`ofxSocketIO` is an ofxaddon that wraps [`socket.io-client-cpp`](https://github.com/socketio/socket.io-client-cpp). **It is still under ~~active~~ development.**
 
 ### Installation
 
