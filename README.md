@@ -72,6 +72,9 @@ void ofApp::onServerEvent (ofxSocketIOData& data) {
 ##### `getBoolValue(std::string key)`
 &rarr; Get the `bool` value for the specified key.
 
+##### `getVector()`
+&rarr; Get the raw vector if the message is not a map.
+
 ### Troubleshooting
 
 #### ping pong
