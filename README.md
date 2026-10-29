@@ -111,6 +111,7 @@ These folks have made some useful contributions to `ofxSocketIO` too:
 - [smulube](https://github.com/smulube)
 - [sy1vain](https://github.com/sy1vain)
 - [jedahan](https://github.com/jedahan)
+- [danoli3](https://github.com/danoli3)
 
 ### License
 
