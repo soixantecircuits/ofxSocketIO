@@ -6,13 +6,24 @@
 
 ### Installation
 
-`ofxSocketIO` provides the compiled libraries for `osx` and `linux64` out of the box. If you have to compile `socket.io-client-cpp yourself`, follow the [installation](https://github.com/socketio/socket.io-client-cpp/blob/master/INSTALL.md) instructions.
+`ofxSocketIO` provides the compiled libraries for `osx`, `linux64` (x86_64), `linuxaarch64` (64-bit ARM: Raspberry Pi OS 64-bit, ARM servers) and `linuxarmv6l` out of the box. If you have to compile `socket.io-client-cpp yourself`, follow the [installation](https://github.com/socketio/socket.io-client-cpp/blob/master/INSTALL.md) instructions.
 
 ##### TLS/SSL
 
 `socket.io-client-cpp` compiles with SSL support by default. However, we had issues with certificates and thus removed the SSL support. **The provided libs (osx and linux64) does not support TLS/SSL**.
 
 *FYI, we simply removed the `find_package(OpenSSL)` call in the `CMakeLists.txt`.*
+
+##### Linux
+
+The `linux64` and `linuxaarch64` libraries (socket.io-client-cpp and the Boost libraries it uses) are static and built with `-fPIC`, so apps link as PIE, the default on current distros. They're built on Ubuntu 18.04 and link on any newer distro. To rebuild them with Docker:
+
+```sh
+scripts/build_socketio_linux.sh           # both
+scripts/build_socketio_linux.sh arm64     # or amd64
+```
+
+`addon_config.mk` lists the Linux libraries in link order (socket.io-client before Boost).
 
 ### Usage
 
