@@ -18,6 +18,7 @@ public:
   void onServerEvent(ofxSocketIOData& data);
   void onPingEvent(ofxSocketIOData& data);
   void onNSPingEvent(ofxSocketIOData& data);
+  void onArrayEvent(ofxSocketIOData& data);
 
   ofxSocketIO socketIO;
 
@@ -27,6 +28,7 @@ public:
   ofEvent<ofxSocketIOData&> serverEvent;
   ofEvent<ofxSocketIOData&> pingEvent;
   ofEvent<ofxSocketIOData&> nspingEvent;
+  ofEvent<ofxSocketIOData&> arrayEvent;
 
   std::string address;
   std::string status;

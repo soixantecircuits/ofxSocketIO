@@ -36,6 +36,10 @@ void ofApp::bindEvents () {
   std::string nspingEventName = "nsping";
   socketIO.bindEvent(nspingEvent, nspingEventName, "nsp");
   ofAddListener(nspingEvent, this, &ofApp::onNSPingEvent);
+
+  std::string arrayEventName = "array-event";
+  socketIO.bindEvent(arrayEvent, arrayEventName);
+  ofAddListener(arrayEvent, this, &ofApp::onArrayEvent);
 }
 
 //--------------------------------------------------------------
@@ -72,6 +76,17 @@ void ofApp::onServerEvent (ofxSocketIOData& data) {
 
   ofxSocketIOData nested = data.getNestedValue("nested");
   ofLogNotice("ofxSocketIO", ofToString(nested.getStringValue("hello")));
+}
+
+void ofApp::onArrayEvent (ofxSocketIOData& data) {
+    for (auto line : data.getVector()) {
+        ofLogNotice("ofxSocketIO", line->get_string());
+    }
+
+  std::string who = "tina";
+  std::string you = "[ \"you're simply the best\", \"better than all the rest\", \"better than anyone\", \"anyone I ever met\" ]";
+
+  socketIO.emit(who, you);
 }
 
 void ofApp::onPingEvent (ofxSocketIOData& data) {

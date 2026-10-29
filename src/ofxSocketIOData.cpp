@@ -6,6 +6,10 @@ void ofxSocketIOData::setData(sio::message::ptr const& data) {
   _data = data;
 }
 
+std::vector<std::shared_ptr<sio::message>>& ofxSocketIOData::getVector() {
+  return _data->get_vector();
+}
+
 void ofxSocketIOData::setNullData () {
   _data = NULL;
 }

@@ -2,17 +2,28 @@
 
 ### Description
 
-`ofxSocketIO` is an ofxaddon that wraps [`socket.io-client-cpp`](https://github.com/socketio/socket.io-client-cpp). **It is still under active development.**
+`ofxSocketIO` is an ofxaddon that wraps [`socket.io-client-cpp`](https://github.com/socketio/socket.io-client-cpp). **It is still under ~~active~~ development.**
 
 ### Installation
 
-`ofxSocketIO` provides the compiled libraries for `osx` and `linux64` out of the box. If you have to compile `socket.io-client-cpp yourself`, follow the [installation](https://github.com/socketio/socket.io-client-cpp/blob/master/INSTALL.md) instructions.
+`ofxSocketIO` provides the compiled libraries for `osx`, `linux64` (x86_64), `linuxaarch64` (64-bit ARM: Raspberry Pi OS 64-bit, ARM servers) and `linuxarmv6l` out of the box. If you have to compile `socket.io-client-cpp yourself`, follow the [installation](https://github.com/socketio/socket.io-client-cpp/blob/master/INSTALL.md) instructions.
 
 ##### TLS/SSL
 
 `socket.io-client-cpp` compiles with SSL support by default. However, we had issues with certificates and thus removed the SSL support. **The provided libs (osx and linux64) does not support TLS/SSL**.
 
 *FYI, we simply removed the `find_package(OpenSSL)` call in the `CMakeLists.txt`.*
+
+##### Linux
+
+The `linux64` and `linuxaarch64` libraries (socket.io-client-cpp and the Boost libraries it uses) are static and built with `-fPIC`, so apps link as PIE, the default on current distros. They're built on Ubuntu 18.04 and link on any newer distro. To rebuild them with Docker:
+
+```sh
+scripts/build_socketio_linux.sh           # both
+scripts/build_socketio_linux.sh arm64     # or amd64
+```
+
+`addon_config.mk` lists the Linux libraries in link order (socket.io-client before Boost).
 
 ### Usage
 
@@ -39,6 +50,9 @@ void ofApp::onServerEvent (ofxSocketIOData& data) {
   // See the `ofxSocketIOData` API on how to use the `data` parameter here
 }
 ```
+
+##### `getStatus()`
+&rarr; Returns the current status. Either `connected`, `closed`, `reconnecting` or `errored`.
 
 ##### `connectionEvent`
 &rarr; An `ofEvent` triggered when the socket is connected to the server
@@ -69,6 +83,9 @@ void ofApp::onServerEvent (ofxSocketIOData& data) {
 ##### `getBoolValue(std::string key)`
 &rarr; Get the `bool` value for the specified key.
 
+##### `getVector()`
+&rarr; Get the raw vector if the message is not a map.
+
 ### Troubleshooting
 
 #### ping pong
@@ -84,15 +101,17 @@ You may experience issues with `'ping'` and `'pong'` events, as they are used in
 
 ### Credits
 
-`ofxSocketIO` is maintained by [Soixante circuits](http://www.soixantecircuits.fr).
+`ofxSocketIO` is maintained by [Soixante circuits](http://www.soixantecircuits.fr) and [hugohil](http://github.com/hugohil).
 
 It exists thanks to the great work of the [socket.io-client-cpp contributors](https://github.com/socketio/socket.io-client-cpp/graphs/contributors).
 
-Finally, these folks has made some usefull contributions to `ofxSocketIO`:
+These folks have made some useful contributions to `ofxSocketIO` too:
 - [muraji](https://github.com/muraji)
 - [thorsonmscott](https://github.com/thorsonmscott)
 - [smulube](https://github.com/smulube)
 - [sy1vain](https://github.com/sy1vain)
+- [jedahan](https://github.com/jedahan)
+- [danoli3](https://github.com/danoli3)
 
 ### License
 

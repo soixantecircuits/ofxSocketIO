@@ -14,6 +14,17 @@ const datas = {
   }
 }
 
+const simplyTheBest = [
+  `I call you when I need you, my heart's on fire`,
+  `You come to me, come to me wild and wired`,
+  `Oh, you come to me`,
+  `give me everything I need.`,
+  `Give me a lifetime of promises and a world of dreams`,
+  `Speak the language of love like you know what it means`,
+  `And it can't be wrong, take my heart`,
+  `And make it strong, baby`
+]
+
 io = require('socket.io')(config.server.port)
 io.on('connection', function (socket) {
   console.log('connection'.bold.green)
@@ -25,6 +36,8 @@ io.on('connection', function (socket) {
     socket.emit('pingy')
   }, 2000)
 
+  socket.emit('array-event', simplyTheBest)
+
   socket
   .on('disconnect', () => {
     console.log('disconnect'.bold.red)
@@ -32,6 +45,11 @@ io.on('connection', function (socket) {
   })
   .on('pongy', (data) => {
     console.log('pongy'.blue, data)
+  })
+  .on('tina', (lines) => {
+    JSON.parse(lines).forEach(line => {
+      console.log('tina'.green, line)
+    })
   })
 })
 
